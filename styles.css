@@ -30,4 +30,22 @@ background-color: green;
 }
 #bookcontainer > div {
     height: 300px;
+    border: 2px solid orange;
+    border-radius: 10px;
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color:green;
+}
+.read {
+    display: flex;
+    justify-content: space-between;
+    margin-right: 20px;
+}
+.trueLabel {
+    
+}
+.falseLabel {
+    color: red;
 }

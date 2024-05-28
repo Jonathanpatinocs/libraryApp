@@ -8,17 +8,19 @@ function Book(title, author, pages, read) {
     this.id = 0;
 }
 Book.prototype.changeReadStatus = function() {
+    let bookDivReadLabel = document.getElementById(this.id)
     if (this.read === false ) {
         this.read = true;
+        bookDivReadLabel.className = 'trueLabel'
     }
     else {
         this.read = false;
+        bookDivReadLabel.className = 'falseLabel'
     }
-    let bookDivReadLabel = document.getElementById(this.id)
-    bookDivReadLabel.innerText = 'Read: ' + this.read;
+    
+    bookDivReadLabel.innerHTML = 'Read:  <span> ' + this.read + '</span>'
 }
-const test = new Book('tit;e', 'author', 36, true);
-myLibrary.push(test);
+
 
 function addBooktoLibrary() {
     let title = prompt('title');
@@ -39,13 +41,19 @@ function displaybooks() {
         let bookDivPages = document.createElement('div');
         bookDivPages.innerText = 'Pages: ' + myLibrary[i].pages;
         let bookDivRead = document.createElement('div');
-        bookDivRead.className = 'readCheckbox';
+        bookDivRead.className = 'read';
         let bookDivReadLabel = document.createElement('div');
-        bookDivReadLabel.innerText = 'Read: ' + myLibrary[i].read;
+        bookDivReadLabel.innerHTML = 'Read:  <span> ' + myLibrary[i].read + '</span>'
         bookDivReadLabel.id = i;
+        if (myLibrary[i].read === false) {
+            bookDivReadLabel.className = 'falseLabel'
+        }
+        else {
+            bookDivReadLabel.className = 'trueLabel'
+        }
         let bookDivReadButton = document.createElement('button');
         bookDivReadButton.className = 'readButton';
-        bookDivReadButton.innerText = "Change Read Status"
+        bookDivReadButton.innerText = "Change Status"
         bookDivReadButton.addEventListener('click', ()=> {
             myLibrary[i].changeReadStatus();
         })
@@ -53,7 +61,7 @@ function displaybooks() {
         bookDivRead.append(bookDivReadLabel, bookDivReadButton)
         bookdiv.append(bookDivTitle, bookDivAuthor, bookDivPages, bookDivRead);
         container.appendChild(bookdiv);
-        console.log(myLibrary[i].id);
+        console.log(myLibrary[i]);
     }
 }
 function clearScreen() {
