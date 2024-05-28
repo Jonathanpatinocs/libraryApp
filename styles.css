@@ -1,0 +1,33 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-width: 800px;
+}
+* {
+    border: 1px solid red;
+}
+.header {
+ display: flex;
+ text-align: center;
+ align-items: center;
+ justify-content: center;
+}
+.header h1 {
+    margin-left: auto;
+}
+#addbook {
+margin-left: auto;
+margin-right: 20px;
+height: 40px;
+width: 100px;
+background-color: green;
+}
+#bookcontainer {
+    justify-content: center;
+    display:grid;
+    grid-template-columns: repeat(3, minmax(200px, 300px));
+    gap:5%;
+}
+#bookcontainer > div {
+    height: 300px;
+}
