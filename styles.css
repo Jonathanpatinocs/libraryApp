@@ -49,3 +49,10 @@ background-color: green;
 .falseLabel {
     color: red;
 }
+.deleteButton {
+    background-color: red;
+    height: 20px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: 20px
+}

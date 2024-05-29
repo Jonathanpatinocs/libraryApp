@@ -20,7 +20,11 @@ Book.prototype.changeReadStatus = function() {
     
     bookDivReadLabel.innerHTML = 'Read:  <span> ' + this.read + '</span>'
 }
-
+Book.prototype.delete = function() {
+    myLibrary.splice(this.id, 1);
+    clearScreen();
+    displaybooks();
+}
 
 function addBooktoLibrary() {
     let title = prompt('title');
@@ -57,9 +61,15 @@ function displaybooks() {
         bookDivReadButton.addEventListener('click', ()=> {
             myLibrary[i].changeReadStatus();
         })
-        
+        let deleteButton = document.createElement('button');
+        deleteButton.className = 'deleteButton'
+        deleteButton.innerText = 'X';
+        deleteButton.addEventListener('click', ()=> {
+            
+            myLibrary[i].delete();
+        })
         bookDivRead.append(bookDivReadLabel, bookDivReadButton)
-        bookdiv.append(bookDivTitle, bookDivAuthor, bookDivPages, bookDivRead);
+        bookdiv.append(bookDivTitle, bookDivAuthor, bookDivPages, bookDivRead, deleteButton);
         container.appendChild(bookdiv);
         console.log(myLibrary[i]);
     }
