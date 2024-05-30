@@ -4,7 +4,8 @@ function Book(title, author, pages, read) {
     this.title = title;
     this.author = author;
     this.pages = pages;
-    this.read = true;
+   this.read  = true;
+    
     this.id = 0;
 }
 Book.prototype.changeReadStatus = function() {
@@ -27,12 +28,7 @@ Book.prototype.delete = function() {
 }
 
 function addBooktoLibrary() {
-    let title = prompt('title');
-    let author = prompt('author');
-    let pages = prompt('pages');
-    let read = prompt('read?');
-    let book = new Book(title, author, pages, read);
-    myLibrary.push(book);
+        
 }
 function displaybooks() {
     for (let i = 0; i < myLibrary.length; i ++) {
@@ -81,8 +77,37 @@ function clearScreen() {
 }
 const addbookButton = document.getElementById('addbook');
 addbookButton.addEventListener('click', ()=> {
-    addBooktoLibrary();
-    clearScreen();
-    displaybooks();
+    dialog.showModal();
+    
 })
 const container = document.getElementById('bookcontainer');
+const form = document.getElementById('addBookForm');
+
+const dialog = document.getElementById('dialog');
+
+form.addEventListener('submit' ,(event)=> {
+        
+    let title = document.getElementById("title");
+    
+    let author = document.getElementById('author');
+    
+    let pages = document.getElementById('pages');
+    
+    let read = document.getElementById('readstatus');
+    
+    let book = new Book(title.value, author.value, pages.value, read.value);
+    myLibrary.push(book);
+    console.log(book);
+    
+    dialog.close();
+    clearScreen();
+    displaybooks();
+    title.value = ''
+    author.value = ''
+    pages.value = ''
+    
+    console.log(myLibrary);
+    console.log(read.value);
+    event.preventDefault();
+    
+} ) 
