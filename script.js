@@ -1,15 +1,16 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-   this.read  = true;
-    
-    this.id = 0;
-}
-Book.prototype.changeReadStatus = function() {
-    let bookDivReadLabel = document.getElementById(this.id)
+class Book {
+    constructor(title, author, pages, read) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read  = true;
+        
+        this.id = 0;
+    }
+    changeReadStatus() {
+        let bookDivReadLabel = document.getElementById(this.id)
     if (this.read === false ) {
         this.read = true;
         bookDivReadLabel.className = 'trueLabel'
@@ -20,16 +21,15 @@ Book.prototype.changeReadStatus = function() {
     }
     
     bookDivReadLabel.innerHTML = 'Read:  <span> ' + this.read + '</span>'
-}
-Book.prototype.delete = function() {
+    }
+    delete() {
     myLibrary.splice(this.id, 1);
     clearScreen();
     displaybooks();
+    }
+    
 }
 
-function addBooktoLibrary() {
-        
-}
 function displaybooks() {
     for (let i = 0; i < myLibrary.length; i ++) {
         myLibrary[i].id = i;
